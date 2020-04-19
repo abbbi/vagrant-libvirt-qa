@@ -1,5 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+#
+Vagrant.require_plugin "vagrant-libvirt"
 
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 
