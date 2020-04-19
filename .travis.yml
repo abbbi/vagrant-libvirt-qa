@@ -16,6 +16,7 @@ script:
 - git clone https://github.com/vagrant-libvirt/vagrant-libvirt/
 - cd vagrant-libvirt
 - sudo bundle install
+- sudo bundle exec vagrant plugin install vagrant-reload
 - cd ..
 - git clone https://github.com/vagrant-libvirt/vagrant-libvirt-qa.git
 - cd vagrant-libvirt-qa/
