@@ -13,6 +13,11 @@ install:
 - sudo vagrant plugin install vagrant-reload
 
 script:
+- git clone https://github.com/vagrant-libvirt/vagrant-libvirt/
+- cd vagrant-libvirt
+- gem build vagrant-libvirt
+- sudo gem install vagrant-libvirt*.gem
+- cd ..
 - git clone https://github.com/vagrant-libvirt/vagrant-libvirt-qa.git
 - cd vagrant-libvirt-qa/
 - sh vagrant-libvirt-test-cycle.sh
