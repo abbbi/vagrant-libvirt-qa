@@ -11,4 +11,5 @@ script:
 - sudo bundle install
 - sudo bundle --binstubs /tmp/exec
 - sudo VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 /tmp/exec/vagrant plugin install vagrant-reload
+- cd ..
 - ./vagrant-libvirt-test-cycle.sh
