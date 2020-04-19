@@ -8,6 +8,7 @@ install:
 script:
 - git clone https://github.com/vagrant-libvirt/vagrant-libvirt/
 - cd vagrant-libvirt
+- git revert 608037c15c099161ba3354d5083c4dcb99405fba --no-edit
 - sudo bundle install
 - sudo bundle --binstubs /tmp/exec
 - sudo VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 /tmp/exec/vagrant plugin install vagrant-reload
