@@ -3,20 +3,11 @@ language: python
 
 install:
 # Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
-- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev ruby-bundler
-
-# Download Vagrant & Install Vagrant package
-- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb
-- sudo dpkg -i vagrant_2.2.7_x86_64.deb
-
-# Install vagrant-libvirt Vagrant plugin
-- vagrant plugin install vagrant-reload
+- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev ruby-bundler bsdtar libz-dev libxml2-dev
 
 script:
 - git clone https://github.com/vagrant-libvirt/vagrant-libvirt/
-- cd vagrant-libvirt
-- gem2.4 build vagrant-libvirt
-- vagrant plugin install vagrant-libvirt-0.0.45.gem
-- git clone https://github.com/vagrant-libvirt/vagrant-libvirt-qa.git
-- cd vagrant-libvirt-qa/
-- sh vagrant-libvirt-test-cycle.sh
+- sudo bundle install
+- sudo bundle --binstubs /tmp/exec
+- sudo VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 /tmp/exec/vagrant plugin install vagrant-reload
+- ./vagrant-libvirt-test-cycle.sh
